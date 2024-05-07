@@ -19,25 +19,29 @@
 async function run_it() {
 
 	// JavaScript
-	const h1 = document.createElement("h1");
-	h1.textContent = "JavaScript: Print something";
-	h1.header = "header";
-	document.getElementById('JavaScript_root').appendChild(h1);
+	const h1Element = document.createElement("h1");
+	h1Element.textContent = "JavaScript: Print something";
+	h1Element.header = "header";
+	document.getElementById('JavaScript_root').appendChild(h1Element);
 
 
 	// JSX
-	const header = React.createElement('h1', null, 'Your Header Text');
-	console.log('header: ', header);
+	const element = React.createElement('h1', null, 'Your Header Text');
+	// OR
+	// const element = (<h1>Your Header Text</h1>);  // does not work in JavaScript
+	
+	console.log('element: ', element);
 	
 	// Original way to present result on page
 	// const container = document.getElementById('JSX_root');
-	// ReactDOM.render(header, container);
+	// ReactDOM.render(element, container);
 
 	// OR
 
+	// New way to present result on page
 	const container = document.getElementById('JSX_root');
 	const root = ReactDOM.createRoot(container);
-	root.render(header);
+	root.render(element);
 	
 }
 	
