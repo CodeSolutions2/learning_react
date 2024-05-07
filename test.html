@@ -17,7 +17,8 @@
 <!-- <script src="https://unpkg.com/react/umd/react.development.js"></script> -->
 <!-- <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script> -->
 	
-  
+<script crossorigin src="https://unpkg.com/reactdom@18/umd/react-dom.development.js"></script>
+	
 <script>
 
 async function run_it() {
@@ -34,10 +35,10 @@ async function run_it() {
 	console.log('header: ', header);
 	
 	// const root = createRoot(document.getElementById('root'));
-	// ReactDOM.render(header, document.getElementById('JSX_root'));
+	ReactDOM.render(header, document.getElementById('JSX_root'));
 	// TypeError: ReactDebugCurrentFrame is undefined
 
-	document.getElementById('JSX_root').appendChild(header);
+
 	
 }
 	
