@@ -3,35 +3,36 @@
 <head></head>
 <body>
 
+<button id="run_it" onclick="run_it()">run_it</button>
+	
+<div id="root"></div>
 <!-- --------------------------------------------------- -->
 
 
-<script src=" https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js "></script>  
+<script src=" https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>  
   
 <script>
 
-import { useState } from 'react';
-import { createRoot } from 'react-dom/client';
+function run_it() {
 
-function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>
-        Increment
-      </button>
-    </>
-  );
+	// JavaScript
+	const h1 = document.createElement("h1");
+	h1.textContent = "JavaScript: Print something";
+	h1.header = "header";
+	console.log("h1: ", h1);
+
+
+	// JSX
+	const element = (<h1 className="header">JSX: Print something</h1>);
+	console.log("element: ", element);
+	const root = createRoot(document.getElementById('root'));
+	root.render(element, document.getElementById('root'));
+	
 }
-
-const root = createRoot(document.getElementById('root'));
-root.render(<App />);
-
 	
 // ----------------------------------------------------
   
 </script>
 
-  </body>
+</body>
 </html>
