@@ -5,7 +5,9 @@
 
 <button id="run_it" onclick="run_it()">run_it</button>
 	
-<div id="root"></div>
+<div id="JavaScript_root"></div>
+<div id="JSX_root"></div>
+	
 <!-- --------------------------------------------------- -->
 
 
@@ -22,20 +24,15 @@ async function run_it() {
 	const h1 = document.createElement("h1");
 	h1.textContent = "JavaScript: Print something";
 	h1.header = "header";
-	document.getElementById('root').appendChild(h1);
+	document.getElementById('JavaScript_root').appendChild(h1);
 
 
 	// JSX
-	// const element = (<h1 className="header">JSX: Print something</h1>);
-	// console.log("element: ", element);
-	// SyntaxError: expected expression, got '<'
-	
-	
 	const header = React.createElement('h1', null, 'Your Header Text');
 	console.log('header: ', header);
 	
 	// const root = createRoot(document.getElementById('root'));
-	React.render(header, document.getElementById('root'));
+	React.render(header, document.getElementById('JSX_root'));
 	
 }
 	
