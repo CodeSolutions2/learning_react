@@ -9,23 +9,9 @@
 <div id="JSX_root"></div>
 	
 <!-- --------------------------------------------------- -->
-
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script> -->
-	
-<!-- <script src=" https://cdn.jsdelivr.net/npm/react-dom@18.3.1/index.min.js "></script> -->
-<!-- index.js missing -->
 	
 <script src="https://unpkg.com/react/umd/react.development.js"></script>
-	
 <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
-<!-- TypeError: ReactDebugCurrentFrame is undefined -->
-
-<!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> -->
-
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/cjs/react-dom.production.min.js"></script> -->
-<!-- Uncaught ReferenceError: require is not defined -->
 
 	
 <script>
@@ -43,11 +29,15 @@ async function run_it() {
 	const header = React.createElement('h1', null, 'Your Header Text');
 	console.log('header: ', header);
 	
-	// const root = createRoot(document.getElementById('root'));
-	ReactDOM.render(header, document.getElementById('JSX_root'));
-	
+	// Original way to present result on page
+	// const container = document.getElementById('JSX_root');
+	// ReactDOM.render(header, container);
 
+	// OR
 
+	const container = document.getElementById('JSX_root');
+	const root = ReactDOM.createRoot(container);
+	root.render(header);
 	
 }
 	
