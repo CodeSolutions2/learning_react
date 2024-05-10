@@ -32,10 +32,10 @@ async function run_it() {
 	//				    React.createElement('p', null, 'This is a paragraph'));
  
 	// Usefullness of for loops
-	var array1 = [0, 1, 2, 3, 4, 5]; 
+	var array1 = [2, 3, 4, 5, 7, 8]; 
 	
 	// const ObjectRow = ({ value }) => { return React.createElement('tr', null, `${value}`); };
-	const ObjectRow = array1.map((row, ind) => { return React.createElement('td', null, `${row}`); })
+	const ObjectRow = array1.map((row, ind) => { return React.createElement('td', null, `${ind}: ${row}`); })
 	const element = React.createElement('table', null, 
 		React.createElement('tbody', {className: 'tblBody'}, 
 		React.createElement('tr', null, ObjectRow) 
