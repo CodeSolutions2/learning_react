@@ -25,18 +25,24 @@ async function run_it() {
 	// Usefullness of for loops
 	var array1 = [0, 1, 2, 3, 4, 5]; 
 	
-	const ObjectRow = ({ value }) => {
-	  return React.createElement('tr', null, `${value}`);
-	};
-	
-	const element = React.createElement('tbody', {className: 'tblBody'}, 
-			React.createElement('ObjectRow', null, 4), 
-			    );
+	// const ObjectRow = ({ value }) => { return React.createElement('tr', null, `${value}`); };
+	const ObjectRow = array1.map((row, ind) => { return React.createElement('tr', null, `${row}`); })
+	const element = React.createElement('div', null, 
+		React.createElement('tbody', {className: 'tblBody'}, 
+		React.createElement('ObjectRow', null, ObjectRow) 
+			    ));
+
+	// OR
 	
 	// { array1.map((row, index) => <ObjectRow key={i.id} name={i.name} />) }
-
-	
-	 
+	// react_ele = [];
+	// for (let i=0; i>array1.length; i++){
+	// 	react_ele.push(React.createElement('tr', null, `${array1[i]}`);)
+	// }
+	//  const element = React.createElement('div', null, 
+	// 	React.createElement('tbody', {className: 'tblBody'}, 
+	// 		react_ele
+	// 		    ));
 	
 	
 	console.log('element: ', element);
