@@ -9,6 +9,15 @@
 <div id="JSX_root"></div>
 	
 <!-- --------------------------------------------------- -->
+
+<style>
+canvas {border: 1px solid black; position: absolute; display: inline-block; z-index: 1; top: 150px;},
+div {position: relative; z-index: 2;},
+table {border-collapse: collapse;}
+td,
+th {border: 1px solid black; padding: 10px 20px;}
+</style>
+
 	
 <script src="https://unpkg.com/react/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
@@ -27,7 +36,7 @@ async function run_it() {
 	
 	// const ObjectRow = ({ value }) => { return React.createElement('tr', null, `${value}`); };
 	const ObjectRow = array1.map((row, ind) => { return React.createElement('td', null, `${row}`); })
-	const element = React.createElement('div', null, 
+	const element = React.createElement('table', null, 
 		React.createElement('tbody', {className: 'tblBody'}, 
 		React.createElement('tr', null, ObjectRow) 
 			    ));
