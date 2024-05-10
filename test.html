@@ -26,10 +26,10 @@ async function run_it() {
 	var array1 = [0, 1, 2, 3, 4, 5]; 
 	
 	// const ObjectRow = ({ value }) => { return React.createElement('tr', null, `${value}`); };
-	const ObjectRow = array1.map((row, ind) => { return React.createElement('tr', null, `${row}`); })
+	const ObjectRow = array1.map((row, ind) => { return React.createElement('td', null, `${row}`); })
 	const element = React.createElement('div', null, 
 		React.createElement('tbody', {className: 'tblBody'}, 
-		React.createElement('ObjectRow', null, ObjectRow) 
+		React.createElement('tr', null, ObjectRow) 
 			    ));
 
 	// OR
