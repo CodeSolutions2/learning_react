@@ -31,7 +31,7 @@ async function table_row() {
 	var array1 = [2, 3, 4, 5, 7, 8]; 
 	
 	// const ObjectRow = ({ value }) => { return React.createElement('tr', null, `${value}`); };
-	const ObjectRow = array1.map((row, ind) => { return React.createElement('td', null, `${ind}: ${row}`); })
+	const ObjectRow = array1.map((row, ind) => { return React.createElement('td', null, `${row}`); key={ind} })
 	const element = React.createElement('table', null, 
 		React.createElement('tbody', {className: 'tblBody'}, 
 		React.createElement('tr', null, ObjectRow) 
@@ -58,7 +58,7 @@ async function print_table_rows_columns() {
 	
 	for (let i= 0; i < rowNum; i++) {
 
-		const ObjectRowCol = React.createElement('tr', null, rowcol[i]).map((row, ind) => { return React.createElement('td', null, `${row}`); key={ind} });
+		const ObjectRowCol = React.createElement('tr', null, rowcol[i].map((row, ind) => { return React.createElement('td', null, `${row}`); key={ind} }));
 
 		const element = React.createElement('table', null, React.createElement('tbody', {className: 'tblBody'}, ObjectRowCol))
 	}
