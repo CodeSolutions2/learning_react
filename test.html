@@ -48,27 +48,7 @@ async function table_row() {
 	root.render(element);
 	
 }
-	
-// ----------------------------------------------------
 
-async function table_row0() {
-	
-	for (let i= 0; i < rowcol.length; i++) {
-	
-		const ObjectRow = rowcol[i].map((row, ind) => { return React.createElement('td', null, `${row}`); key={ind+'_'+i} })
-		const element = React.createElement('table', null, 
-			React.createElement('tbody', {className: 'tblBody'}, 
-			React.createElement('tr', null, ObjectRow) 
-				    ));
-
-	
-		const container = document.getElementById('JSX_root');
-		const root = ReactDOM.createRoot(container);
-		root.render(element);
-
-	}
-	
-}
 	
 // ----------------------------------------------------
 
