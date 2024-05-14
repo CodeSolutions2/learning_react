@@ -4,7 +4,6 @@
 <body>
 
 <button id="table_row" onclick="table_row()">table_row</button>
-<button id="table_row0" onclick="table_row0()">table_row0</button>
 <button id="print_table_rows_columns" onclick="print_table_rows_columns()">print_table_rows_columns</button>
 	
 <div id="JavaScript_root"></div>
@@ -77,11 +76,10 @@ async function print_table_rows_columns() {
 
 	
 	let rowNum = rowcol.length;
+	let colNum = rowcol[0].length;
 	
-	for (let i= 0; i < rowNum; i++) {
-
-		const ObjectRowCol = React.createElement('tr', null, rowcol[i].map((row, ind) => { return React.createElement('td', null, `${row}`); key={ind+'_'+i} }));
-
+	for (let r= 0; r < rowNum; r++) {
+		const ObjectRowCol = React.createElement('tr', null, rowcol[r].map((row, c) => { return React.createElement('td', null, `${row}`); key={colNum*r+c} }));
 		const element = React.createElement('table', null, React.createElement('tbody', {className: 'tblBody'}, ObjectRowCol))
 	}
 
