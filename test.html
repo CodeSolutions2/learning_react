@@ -59,7 +59,7 @@ async function print_table_rows_columns() {
 	let colNum = rowcol[0].length;
 	
 	for (let r= 0; r < rowNum; r++) {
-		const ObjectRowCol = React.createElement('tr', null, rowcol[r].map((row, c) => { return React.createElement('td', null, `${row}`); key={colNum*r+c} }));
+		const ObjectRowCol = React.createElement('tr', null, rowcol[r].map((row, c) => { return React.createElement('td', null, `${row}` key={colNum*r+c})  }));
 		const element = React.createElement('table', null, React.createElement('tbody', {className: 'tblBody'}, ObjectRowCol))
 	}
 
