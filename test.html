@@ -3,7 +3,8 @@
 <head></head>
 <body>
 
-<button id="run_it" onclick="run_it()">run_it</button>
+<button id="table_row" onclick="table_row()">table_row</button>
+<button id="print_table_rows_columns" onclick="print_table_rows_columns()">print_table_rows_columns</button>
 	
 <div id="JavaScript_root"></div>
 <div id="JSX_root"></div>
@@ -25,13 +26,8 @@ th {border: 1px solid black; padding: 10px 20px;}
 	
 <script>
 
-async function run_it() {
+async function table_row() {
 	
-	// const element = React.createElement('div', {className: 'greeting'}, 
-	//				    React.createElement('h1', {className: 'header'}, 'This is JSX'), 
-	//				    React.createElement('p', null, 'This is a paragraph'));
- 
-	// Usefullness of for loops
 	var array1 = [2, 3, 4, 5, 7, 8]; 
 	
 	// const ObjectRow = ({ value }) => { return React.createElement('tr', null, `${value}`); };
@@ -55,7 +51,19 @@ async function run_it() {
 	
 // ----------------------------------------------------
 
+async function print_table_rows_columns() {
 
+	var rowcol = [[1, 3, 5, 7, 9, 11], [2, 4, 6, 8, 10, 12]];
+	let rowNum = rowcol.length;
+	
+	for (let i= 0; i < rowNum; i++) {
+
+		const ObjectRowCol = React.createElement('tr', null, rowcol[i]).map((row, ind) => { return React.createElement('td', null, `${row}`); key={ind} });
+
+		const element = React.createElement('table', null, React.createElement('tbody', {className: 'tblBody'}, ObjectRowCol))
+	}
+
+}
 
 	
 // ----------------------------------------------------
