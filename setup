@@ -1,0 +1,64 @@
+1. Check operating system version: cat /etc/*-release (Ubuntu 20.04.6 LTS)
+
+
+2. Check the versions of python install: cd /usr/lib/ (python2.7, python3, python3.8, python3.9)
+
+------------------------------------------
+
+3. Check the location of the jupyter kernel
+
+jupyter kernel: jupyter kernelspec list (Available kernels: python3 /home/codespace/.local/share/jupyter/kernels/python3). Jupyter notebook kernel is installed in: /home/codespace/.local/bin.
+
+------------------------------------------
+
+[Codespaces installation] 
+
+jupyter-notebook: which jupyter (/home/codespace/.local/bin/jupyter) 
+
+cd /home/codespace/.local/bin/jupyter
+
+This means that I can launch a jupyter notbook using: /home/codespace/.local/bin/jupyter-lab
+
+Result: one needs to click on the link to the server. The server requires a token/password which does not work.
+             - Set the jupyter notebook python server file: https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html
+                 - cat /home/codespace/.jupyter/jupyter_server_config.py
+
+cat > /home/codespace/.jupyter/jupyter_server_config.py <<EOF
+c.ServerApp.allow_origin = '*'
+c.NotebookApp.allow_origin = '*'
+EOF
+
+
+------------------------------------------
+
+*** [Typical installaion] Jupyter notebook is typically launched by the following commands: 
+
+(local installation) /usr/local/bin/jupyter-notebook
+(global installation) /usr/bin/jupyter-notebook
+
+Result: there is NO area for codespaces
+
+------------------------------------------
+            
+4. User jupyter notebook with VSCode interface (Extensions (building blocks icon - search Jupyter - install )) OR install jupyter-notebook interface (sudo python3 -m pip install jupyter-notebook)
+
+
+which python  (/home/codespace/.python/current/bin/python)
+cd /home/codespace/.python/current/bin  (it shows that python3.10 is piped to python3)
+
+
+------------------------------------------
+
+
+sudo apt-get install gedit
+
+
+------------------------------------------
+
+gh codespace stop
+
+------------------------------------------
+
+------------------------------------------
+
+------------------------------------------
