@@ -1,64 +1,142 @@
-1. Check operating system version: cat /etc/*-release (Ubuntu 20.04.6 LTS)
+------------------------------------------
 
-
-2. Check the versions of python install: cd /usr/lib/ (python2.7, python3, python3.8, python3.9)
+0. Location of repository files are 
+cd /workspaces/RepoName
+cd /workspaces/codespaces_setup
 
 ------------------------------------------
 
-3. Check the location of the jupyter kernel
+1. Verify operating system version
 
-jupyter kernel: jupyter kernelspec list (Available kernels: python3 /home/codespace/.local/share/jupyter/kernels/python3). Jupyter notebook kernel is installed in: /home/codespace/.local/bin.
+[0] cat /etc/*-release
+# VERSION="20.04.6 LTS (Focal Fossa)" 
+
+  - it does not have ffmpeg installed
 
 ------------------------------------------
 
-[Codespaces installation] 
+2. Verify Python version
 
-jupyter-notebook: which jupyter (/home/codespace/.local/bin/jupyter) 
+[0] cd /usr/lib/ 
+# python2.7, python3, python3.8, python3.9
 
-cd /home/codespace/.local/bin/jupyter
+[1] which python  
+# /home/codespace/.python/current/bin/python
 
-This means that I can launch a jupyter notbook using: /home/codespace/.local/bin/jupyter-lab
+cd /home/codespace/.python/current/bin 
+# it shows that python3.10 is piped to python3, so it is using python3.10
 
-Result: one needs to click on the link to the server. The server requires a token/password which does not work.
-             - Set the jupyter notebook python server file: https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html
-                 - cat /home/codespace/.jupyter/jupyter_server_config.py
+------------------------------------------
 
+3. Setup Jupyter
+
+------------------------------------------------
+Option 0: Run jupyter notebook without vscode
+
+# Instructions for setting the [jupyter_server] configuration file
+# https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html
+------------------------------------------------
+
+# [0] Set the password for the jupyter-server (create a new password)
+jupyter server password
+
+# [1] Launch jupyter-server, that runs jupyter-lab
+/home/codespace/.local/bin/jupyter
+
+# [2] Click on link [http://127.0.0.1:8888/lab] and enter password - jupyter-server launches in another window
+
+
+# (Optional) View where jupyter is installed
+which jupyter 
+# /home/codespace/.local/bin/jupyter
+ls /home/codespace/.local/bin/jupyter
+# jupyter-lab
+
+# (Optional) View the settings in the [jupyter_server] configuration file
+cat /home/codespace/.jupyter/jupyter_server_config.py
+
+# (Optional) Modify the settings in the [jupyter_server] configuration file
 cat > /home/codespace/.jupyter/jupyter_server_config.py <<EOF
 c.ServerApp.allow_origin = '*'
 c.NotebookApp.allow_origin = '*'
 EOF
 
-
-------------------------------------------
-
-*** [Typical installaion] Jupyter notebook is typically launched by the following commands: 
-
+# (Side notes) [Typical installaion] Jupyter notebook is typically launched by the following commands: 
 (local installation) /usr/local/bin/jupyter-notebook
 (global installation) /usr/bin/jupyter-notebook
-
 Result: there is NO area for codespaces
 
+# (Optional) View the location of the jupyter kernel
+jupyter kernelspec list 
+# python3 /home/codespace/.local/share/jupyter/kernels/python3
+# Jupyter notebook kernel is installed in: /home/codespace/.local/bin.
+
+
+------------------------------------------------
+Option 1: Run jupyter notebook WITH vscode
+------------------------------------------------
+User jupyter notebook with VSCode interface
+
+Extensions (building blocks icon - search Jupyter - install )
+
+
+
+
+
+4. Install other Linux programs
+
 ------------------------------------------
-            
-4. User jupyter notebook with VSCode interface (Extensions (building blocks icon - search Jupyter - install )) OR install jupyter-notebook interface (sudo python3 -m pip install jupyter-notebook)
+ffmpeg
+------------------------------------------
+sudo apt-get update
+sudo apt-get install -y ffmpeg  # The option -y tells apt-get to assume the answer to all prompts is yes
 
 
-which python  (/home/codespace/.python/current/bin/python)
-cd /home/codespace/.python/current/bin  (it shows that python3.10 is piped to python3)
+
 
 
 ------------------------------------------
+git commands
+------------------------------------------
+!git pull
 
 
-sudo apt-get install gedit
+!git 
+
+
+
 
 
 ------------------------------------------
-
+gh CLI commands
+------------------------------------------
 gh codespace stop
 
-------------------------------------------
+Create a codespace
+gh codespace create -r OWNER/REPO_NAME [-b BRANCH]
+
+List all your codespaces
+gh codespace list
+
+Delete a codespace:
+gh codespace delete -c CODESPACE-NAME
+
+Rename a codespace
+gh codespace edit -c CODESPACE-NAME -d DISPLAY-NAME
+
+Change the machine type of a codepace
+gh codespace edit -m MACHINE-TYPE-NAME
+
+
+
 
 ------------------------------------------
-
+Setup installation files installed
 ------------------------------------------
+This Linux image includes a number of runtime versions for popular languages like Python, Node, PHP, Java, Go, C++, Ruby, and .NET Core/C#.
+
+https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#using-the-default-dev-container-configuration
+
+
+
+
