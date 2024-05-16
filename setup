@@ -40,10 +40,15 @@ Option 0: Run jupyter notebook without vscode
 # [0] Set the password for the jupyter-server (create a new password)
 jupyter server password
 
-# [1] Launch jupyter-server, that runs jupyter-lab
-/home/codespace/.local/bin/jupyter
+# [1] Change the directory to the repository directory
+cd /workspaces/codespaces_setup
 
-# [2] Click on link [http://127.0.0.1:8888/lab] and enter password - jupyter-server launches in another window
+# [2] Launch jupyter-server, that runs jupyter-server (the codespace closes and then re-opens)
+# /home/codespace/.local/bin/jupyter  # stopped working
+# OR
+jupyter-lab
+
+# [3] Click on link [http://127.0.0.1:8888/lab] and enter password - jupyter-server launches in another window
 
 
 # (Optional) View where jupyter is installed
@@ -90,6 +95,54 @@ ffmpeg
 ------------------------------------------
 sudo apt-get update
 sudo apt-get install -y ffmpeg  # The option -y tells apt-get to assume the answer to all prompts is yes
+
+
+
+
+5. Install other Python programs
+
+!pip help 
+# option -q = quiet
+# option -U or --upgrade = install the latest version
+
+
+------------------------------------------
+tensorflow
+------------------------------------------
+
+# Install Tensorflow
+!pip install -U tensorflow
+# OR
+!pip install "tensorflow==2.15.0"
+# OR
+!pip install "tensorflow==2.16.1"
+
+# ***** Key concept: Tensorflow needs to be the same version as tensorflow-text *****
+# TF.Text is a TensorFlow library of text related ops, modules, 
+# and subgraphs. The library can perform the preprocessing regularly 
+# required by text-based models, and includes other features useful 
+# for sequence modeling not provided by core TensorFlow.
+
+# !pip install --upgrade tensorflow-text
+!pip install "tensorflow-text==2.15.0"
+!pip install "tensorflow-text==2.16.1"
+
+# TensorFlow Model Garden package
+!pip install tf-models-official
+
+# Include the latest changes for the TensorFlow Model Garden package
+!pip install tf-models-nightly
+
+# Install Tensorflow datasets
+!pip install -U tensorflow-datasets
+
+
+# Update Datasets
+!pip install --upgrade tensorflow 
+
+
+
+
 
 
 
