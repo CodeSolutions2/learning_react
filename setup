@@ -100,10 +100,9 @@ git commands
 ------------------------------------------
 !git pull
 
-
-!git 
-
-
+!git add .
+!git commit -m "Updating repository"
+!git push
 
 
 
