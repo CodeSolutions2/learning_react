@@ -159,6 +159,7 @@ git commands
 
 
 
+
 ------------------------------------------
 gh CLI commands
 ------------------------------------------
@@ -178,6 +179,9 @@ gh codespace edit -c CODESPACE-NAME -d DISPLAY-NAME
 
 Change the machine type of a codepace
 gh codespace edit -m MACHINE-TYPE-NAME
+
+
+
 
 
 
