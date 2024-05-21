@@ -29,42 +29,44 @@ div {position: relative; z-index: 2;},
 
 
 async function show_the_maze() {
-  
-    const maze = {cols: 4, rows: 4, tsize: 64, tiles: [0, 1, 2, 3,
-                                                     4, 5, 0, 3,
-                                                     3, 3, 3, 3,
-                                                     3, 3, 3, 3],
-                 getTile(col, row) { return this.tiles[row*maze.cols + col];}
-    };
 
-    // Load the canvas context
-    var ctx = document.getElementById("canvasId").getContext("2d")
+	// 0 = empty square (background of page)
+	// 1=positive, 2=neutral, 3=negative, 4=wall, 5=path, 6=goal
+	const maze = {cols: 4, rows: 4, tsize: 64, tiles: [1, 2, 3, 4,
+                                                     5, 6, 4, 4,
+                                                     4, 4, 4, 4,
+                                                     4, 4, 4, 4],
+		      getTile(col, row) { return this.tiles[row*maze.cols + col];}
+	};
+
+	// Load the canvas context
+	var ctx = document.getElementById("canvasId").getContext("2d")
     
-    // Load the Image
-    const tileAtlas = new Image();
-    // tileAtlas.onload = () => ctx.drawImage(tileAtlas, 0,0);
-    tileAtlas.src = "atlasImage.png";
+	// Load the Image
+	const tileAtlas = new Image();
+	// tileAtlas.onload = () => ctx.drawImage(tileAtlas, 0,0);
+	tileAtlas.src = "atlasImage.png";
 
-    // render maze by ploting each image square 
-    for (let c = 0; c < maze.cols; c++) {
-      for (let r = 0; r < maze.rows; r++) {
-        const tile = maze.getTile(c, r);
-        if (tile !== 0) {
-          // 0 => empty tile
-     ctx.drawImage(
-        tileAtlas, // image
-        (tile - 1) * maze.tsize, // source x
-        0, // source y
-        maze.tsize, // source width
-        maze.tsize, // source height
-        c * maze.tsize, // target x
-        r * maze.tsize, // target y
-        maze.tsize, // target width
-        maze.tsize, // target height
-      );
-    }
-  }
-}
+	// render maze by ploting each image square 
+	for (let c = 0; c < maze.cols; c++) {
+		for (let r = 0; r < maze.rows; r++) {
+			const tile = maze.getTile(c, r);
+			if (tile !== 0) {
+				// 0 => empty tile
+				ctx.drawImage(
+					tileAtlas, // image
+				        (tile - 1) * maze.tsize, // source x
+				        0, // source y
+				        maze.tsize, // source width
+				        maze.tsize, // source height
+				        c * maze.tsize, // target x
+				        r * maze.tsize, // target y
+				        maze.tsize, // target width
+				        maze.tsize, // target height
+				);
+			}
+		}
+	}
 
   
 }
