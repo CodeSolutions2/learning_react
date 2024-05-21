@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+
+<h1>Obtaining goals: maze with sentiment feedback</h1>
+<ol type="A">
+	<li>Click 'Start a round'.</li>
+	<li>How to use: move from START to GOAL, without running into the wall by following the sentiment emojis. Positive emoji means the path/square is a good choice (it is on the recommended path from START to GOAL), neutral emoji means the path/square may or may not be a good or a bad choice, and negative emoji means the path/square is a bad choice (it is far from the recommended path).</li>
+  <li>One can only move one step at a time, and the path that one has taken is highlighted in light grey.</li>
+	<!-- <li>Need think about: 0. how often to show the emoji, 1. where to show the emoji (how many steps ahead), 2. how to show the emoji depending on performance </li> -->
+</ol>
+
+<!-- ---------------------------------------- -->
+  
+<canvas id="canvasId" width="256" height="256" style="display:block"></canvas>
+<button id="show_the_maze" onclick="show_the_maze()">Start a round</button>
+
+<!-- ---------------------------------------- -->
+
+
+  
+<style>
+canvas {border: 1px solid black; position: absolute; display: inline-block; z-index: 1; top: 150px;},
+div {position: relative; z-index: 2;},
+</style>
+  
+<script>
+
+
+async function show_the_maze() {
+  
+    const maze = {cols: 4, rows: 4, tsize: 64, tile: [0, 1, 2, 3,
+                                                     4, 5, 0, 3,
+                                                     3, 3, 3, 3,
+                                                     3, 3, 3, 3],
+                 getTile(col, row) { return this.tiles[row*maze.cols + col];}
+    };
+
+    // Load the canvas context
+    var ctx = document.getElementById("canvasId").getContext("2d")
+    
+    // Load the Image
+    const tileAtlas = new Image();
+    // tileAtlas.onload = () => ctx.drawImage(tileAtlas, 0,0);
+    tileAtlas.src = "atlasImage.png";
+
+    // render maze by ploting each image square 
+    for (let c = 0; c < maze.cols; c++) {
+      for (let r = 0; r < maze.rows; r++) {
+        const tile = maze.getTile(c, r);
+        if (tile !== 0) {
+          // 0 => empty tile
+     ctx.drawImage(
+        tileAtlas, // image
+        (tile - 1) * maze.tsize, // source x
+        0, // source y
+        maze.tsize, // source width
+        maze.tsize, // source height
+        c * maze.tsize, // target x
+        r * maze.tsize, // target y
+        maze.tsize, // target width
+        maze.tsize, // target height
+      );
+    }
+  }
+}
+
+  
+}
+
+
+
+</script>
+  
+</body>
+</html>
